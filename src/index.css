@@ -1,0 +1,151 @@
+/* ─── Passports & Prosecco — Design System ─────────────────────────────── */
+
+:root {
+  /* Dark palette — hero, stats, newsletter, footer */
+  --dark-bg:           oklch(11% 0.012 45);
+  --dark-bg-raised:    oklch(15% 0.014 45);
+  --dark-ink:          oklch(94% 0.006 80);
+  --dark-ink-muted:    oklch(70% 0.012 80);
+  --dark-ink-dim:      oklch(48% 0.010 80);
+  --dark-border:       oklch(26% 0.014 45);
+
+  /* Light palette — about, destinations, instagram */
+  --light-bg:          oklch(98.5% 0.003 90);
+  --light-bg-tint:     oklch(96.5% 0.007 10);
+  --light-ink:         oklch(14% 0.010 80);
+  --light-ink-muted:   oklch(42% 0.012 80);
+  --light-ink-dim:     oklch(62% 0.010 80);
+  --light-border:      oklch(88% 0.008 90);
+
+  /* Brand accent */
+  --pink:              oklch(62% 0.20 10);
+  --pink-bright:       oklch(67% 0.22 10);
+  --pink-bg:           oklch(96% 0.05 10);
+  --pink-muted:        oklch(55% 0.16 10);
+  --gold:              oklch(79% 0.13 85);
+  --gold-muted:        oklch(63% 0.09 85);
+
+  /* Typography */
+  --font-display: 'Cinzel', 'Georgia', serif;
+  --font-script:  'Italianno', cursive;
+  --font-body:    'Jost', system-ui, sans-serif;
+
+  /* Layout */
+  --max-w:      1280px;
+  --section-py: clamp(4rem, 8vw, 7rem);
+  --section-px: clamp(1.25rem, 4vw, 4rem);
+  --z-sticky:   100;
+}
+
+/* ─── Reset ─────────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--light-ink);
+  background: var(--dark-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img   { display: block; max-width: 100%; }
+a     { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+h1, h2, h3, h4 { text-wrap: balance; font-weight: 400; line-height: 1.1; }
+p { text-wrap: pretty; }
+#root { min-height: 100svh; }
+
+/* ─── Utilities ──────────────────────────────────────────────────────────── */
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0;
+  margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border-width: 0;
+}
+
+.container {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--section-px);
+}
+
+.section-dark  { background: var(--dark-bg);  color: var(--dark-ink);  }
+.section-light { background: var(--light-bg); color: var(--light-ink); }
+
+.text-pink   { color: var(--pink); }
+.text-gold   { color: var(--gold); }
+.text-script {
+  font-family: var(--font-script);
+  font-size: 1.4em;
+  color: var(--pink);
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 0.5rem; padding: 0.8rem 2rem;
+  font-family: var(--font-body); font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  transition: background 0.22s, color 0.22s, border-color 0.22s;
+  white-space: nowrap;
+}
+.btn--pink  { background: var(--pink);  color: #fff; }
+.btn--pink:hover  { background: var(--pink-bright); }
+.btn--pink:focus-visible  { outline: 2px solid var(--pink); outline-offset: 3px; }
+.btn--gold  { background: var(--gold);  color: var(--dark-bg); }
+.btn--gold:hover  { background: oklch(86% 0.16 85); }
+.btn--outline-light {
+  border: 1px solid var(--light-border); color: var(--light-ink); background: transparent;
+}
+.btn--outline-light:hover { background: oklch(93% 0.005 90); }
+.btn--outline-dark {
+  border: 1px solid oklch(55% 0.09 85); color: var(--gold); background: transparent;
+}
+.btn--outline-dark:hover { background: oklch(100% 0 0 / 0.05); }
+
+/* ─── Section Header ─────────────────────────────────────────────────────── */
+
+.section-kicker {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--pink);
+  display: block; margin-bottom: 0.75rem;
+}
+
+.section-title-light {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  color: var(--light-ink);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+
+.section-title-dark {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  color: var(--dark-ink);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
