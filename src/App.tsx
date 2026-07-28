@@ -71,7 +71,55 @@ function BrandBadge() {
   )
 }
 
-// ─── Stat Icons ─────────────────────────────────────────────────────────────
+// ─── Brand Logo Decoration SVG ───────────────────────────────────────────────
+function LogoDecoration() {
+  const gold = 'oklch(79% 0.13 85)'
+  const pink = 'oklch(74% 0.14 10)'
+  return (
+    <svg
+      className="brand-logo-svg"
+      viewBox="0 0 240 74"
+      aria-hidden="true"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      {/* ♥ heart, upper-left of globe */}
+      <text x="68" y="14" fill={pink} fontSize="11" fontFamily="Georgia,serif" textAnchor="middle">♥</text>
+
+      {/* Globe centred at (108, 40) */}
+      <g transform="translate(108,40)" stroke={gold} strokeWidth="1.5" fill="none" strokeLinecap="round">
+        {/* Outer circle */}
+        <circle r="23"/>
+        {/* Equator — flat ellipse */}
+        <ellipse rx="23" ry="7.5"/>
+        {/* Main vertical meridian */}
+        <ellipse rx="10" ry="23"/>
+        {/* Upper latitude arc */}
+        <path d="M -21 -11 Q 0 -14.5 21 -11"/>
+        {/* Lower latitude arc */}
+        <path d="M -21 11 Q 0 14.5 21 11"/>
+      </g>
+
+      {/* Dotted arc from globe top-right → plane */}
+      <path
+        d="M 125 22 C 157 -4 185 4 214 18"
+        stroke={gold} strokeWidth="1.3"
+        strokeDasharray="3 3.8" fill="none" strokeLinecap="round"
+      />
+
+      {/* Airplane at end of arc, rotated ~30° */}
+      <g transform="translate(214,18) rotate(30)" fill={gold} stroke="none">
+        {/* Main body / fuselage */}
+        <path d="M 0 -5.5 L 5.5 3.5 L 0 1.8 L -5.5 3.5 Z"/>
+        {/* Wings */}
+        <path d="M -8 0.5 L 8 0.5 L 6.5 3.5 L -8 0.5 Z" opacity="0.85"/>
+        {/* Tail fin */}
+        <path d="M -3.5 3.5 L 3.5 3.5 L 2 6 L -3.5 3.5 Z" opacity="0.75"/>
+      </g>
+    </svg>
+  )
+}
+
+// ─── Stat Icons ──────────────────────────────────────────────────────────────
 const GlobeIcon = () => (
   <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8"/><path d="M12 3c-2.5 3-3.5 5.5-3.5 9s1 6 3.5 9"/><path d="M12 3c2.5 3 3.5 5.5 3.5 9s-1 6-3.5 9"/></svg>
 )
@@ -175,14 +223,10 @@ function Hero() {
       {/* ── Left: Brand text ── */}
       <div className="hero-main__left" ref={ref}>
         <motion.div
-          className="hero-main__deco"
-          initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
+          initial={{ opacity: 0, y: -8 }} animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1 }}
-          aria-hidden="true"
         >
-          <GlobeIcon />
-          <span className="hero-main__deco-dots">·············</span>
-          <PlaneIcon />
+          <LogoDecoration />
         </motion.div>
 
         <motion.div
