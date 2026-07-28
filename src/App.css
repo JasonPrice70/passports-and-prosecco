@@ -472,20 +472,19 @@
 /* ── Hero Main v2 (split layout matching mockup) ───────────────────────── */
 
 .hero-main {
-  position: relative;
+  display: grid;
+  grid-template-columns: 40% 60%;
   min-height: 72vh;
   background: var(--dark-bg);
   overflow: hidden;
   padding-top: 64px;
-  display: flex;
-  align-items: center;
 }
 
 @media (max-width: 900px) {
   .hero-main {
+    grid-template-columns: 1fr;
     min-height: auto;
     padding-top: 56px;
-    flex-direction: column;
   }
 }
 
@@ -495,9 +494,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%;
-  flex-shrink: 0;
-  padding: clamp(2.5rem, 5vw, 5rem) clamp(1.75rem, 4vw, 4rem);
+  background: var(--dark-bg);
+  padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 3.5vw, 3.5rem);
   gap: 1.25rem;
   overflow: hidden;
   min-width: 0;
@@ -508,7 +506,6 @@
     width: 100%;
     padding-top: 2rem;
     padding-bottom: 3rem;
-    background: oklch(11% 0.012 45 / 0.88);
   }
 }
 
@@ -539,9 +536,9 @@
 
 .hero-main__passports {
   font-family: var(--font-display);
-  font-size: clamp(2.75rem, 5.5vw, 5.5rem);
+  font-size: clamp(2.25rem, 4.8vw, 4.5rem);
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--gold);
   line-height: 1;
@@ -626,24 +623,16 @@
 }
 
 .hero-main__right {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-main__right::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    oklch(10% 0.010 45 / 1)    0%,
-    oklch(10% 0.010 45 / 0.97) 15%,
-    oklch(10% 0.010 45 / 0.88) 30%,
-    oklch(10% 0.010 45 / 0.55) 46%,
-    oklch(10% 0.010 45 / 0.18) 62%,
-    transparent                78%
-  );
+  top: 0; bottom: 0; left: 0;
+  width: 10%;
+  background: linear-gradient(to right, var(--dark-bg) 0%, transparent 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -651,22 +640,15 @@
 .hero-main__right img {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: right 42%;
+  object-position: center 40%;
 }
 
 @media (max-width: 900px) {
   .hero-main__right {
-    position: relative;
-    inset: auto;
-    width: 100%;
     aspect-ratio: 4/3;
+    order: -1;
   }
-  .hero-main__right::before {
-    background: linear-gradient(to bottom,
-      transparent 45%,
-      oklch(10% 0.010 45 / 0.92) 100%
-    );
-  }
+  .hero-main__right::before { display: none; }
 }
 
 /* ── Photo Strip ────────────────────────────────────────────────────────── */
