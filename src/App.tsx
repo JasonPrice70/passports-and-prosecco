@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import {
-  motion, useInView, useScroll, useTransform,
-  useReducedMotion, AnimatePresence,
+  motion, useInView,
+  AnimatePresence,
 } from 'framer-motion'
 import './App.css'
 
@@ -31,7 +31,7 @@ function src(id: string, w = 1200, q = 82) {
 // ─── Framer Motion helpers ──────────────────────────────────────────────────
 const fadeUp = {
   hidden:  { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] as number[] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
 }
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }
 function useReveal(amount = 0.12) {
@@ -72,53 +72,6 @@ function BrandBadge() {
 }
 
 // ─── Brand Logo Decoration SVG ───────────────────────────────────────────────
-function LogoDecoration() {
-  const gold = 'oklch(79% 0.13 85)'
-  const pink = 'oklch(74% 0.14 10)'
-  return (
-    <svg
-      className="brand-logo-svg"
-      viewBox="0 0 240 74"
-      aria-hidden="true"
-      preserveAspectRatio="xMidYMid meet"
-    >
-      {/* ♥ heart, upper-left of globe */}
-      <text x="68" y="14" fill={pink} fontSize="11" fontFamily="Georgia,serif" textAnchor="middle">♥</text>
-
-      {/* Globe centred at (108, 40) */}
-      <g transform="translate(108,40)" stroke={gold} strokeWidth="1.5" fill="none" strokeLinecap="round">
-        {/* Outer circle */}
-        <circle r="23"/>
-        {/* Equator — flat ellipse */}
-        <ellipse rx="23" ry="7.5"/>
-        {/* Main vertical meridian */}
-        <ellipse rx="10" ry="23"/>
-        {/* Upper latitude arc */}
-        <path d="M -21 -11 Q 0 -14.5 21 -11"/>
-        {/* Lower latitude arc */}
-        <path d="M -21 11 Q 0 14.5 21 11"/>
-      </g>
-
-      {/* Dotted arc from globe top-right → plane */}
-      <path
-        d="M 125 22 C 157 -4 185 4 214 18"
-        stroke={gold} strokeWidth="1.3"
-        strokeDasharray="3 3.8" fill="none" strokeLinecap="round"
-      />
-
-      {/* Airplane at end of arc, rotated ~30° */}
-      <g transform="translate(214,18) rotate(30)" fill={gold} stroke="none">
-        {/* Main body / fuselage */}
-        <path d="M 0 -5.5 L 5.5 3.5 L 0 1.8 L -5.5 3.5 Z"/>
-        {/* Wings */}
-        <path d="M -8 0.5 L 8 0.5 L 6.5 3.5 L -8 0.5 Z" opacity="0.85"/>
-        {/* Tail fin */}
-        <path d="M -3.5 3.5 L 3.5 3.5 L 2 6 L -3.5 3.5 Z" opacity="0.75"/>
-      </g>
-    </svg>
-  )
-}
-
 // ─── Stat Icons ──────────────────────────────────────────────────────────────
 const GlobeIcon = () => (
   <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8"/><path d="M12 3c-2.5 3-3.5 5.5-3.5 9s1 6 3.5 9"/><path d="M12 3c2.5 3 3.5 5.5 3.5 9s-1 6-3.5 9"/></svg>
@@ -132,13 +85,6 @@ const LuggageIcon = () => (
 const GlassesIcon = () => (
   <svg viewBox="0 0 24 24"><path d="M8 4l-2 8h4L8 4z"/><path d="M16 4l2 8h-4l2-8z"/><line x1="8" y1="12" x2="8" y2="20"/><line x1="16" y1="12" x2="16" y2="20"/><line x1="5" y1="20" x2="11" y2="20"/><line x1="13" y1="20" x2="19" y2="20"/><line x1="8" y1="16" x2="16" y2="16"/></svg>
 )
-const CameraIcon = () => (
-  <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
-)
-const PlaneIcon = () => (
-  <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0011.5 2 1.5 1.5 0 0010 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="currentColor" stroke="none"/></svg>
-)
-
 // ─── Nav ────────────────────────────────────────────────────────────────────
 function Nav() {
   const [scrolled, setScrolled] = useState(false)
