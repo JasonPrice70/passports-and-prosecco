@@ -223,27 +223,16 @@ function Hero() {
       {/* ── Left: Brand text ── */}
       <div className="hero-main__left" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: -8 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.1 }}
+          initial={{ opacity: 0, y: -10 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.9, delay: 0.1 }}
         >
-          <LogoDecoration />
-        </motion.div>
-
-        <motion.div
-          initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={stagger}
-        >
-          <motion.h1 className="hero-main__passports" variants={fadeUp}>
-            Passports
-          </motion.h1>
-          <motion.div className="hero-main__amp-row" variants={fadeUp} aria-hidden="true">
-            <span className="hero-main__line-left" />
-            <span className="hero-main__amp">&amp;</span>
-            <span className="hero-main__line-right" />
-          </motion.div>
-          <motion.p className="hero-main__prosecco" variants={fadeUp}>
-            Prosecco
-          </motion.p>
-          <motion.span className="hero-main__heart" variants={fadeUp} aria-hidden="true">♥</motion.span>
+          <img
+            src="/passportprosecco.svg"
+            alt="Passports & Prosecco"
+            className="hero-logo-img"
+            width={600}
+            height={500}
+          />
         </motion.div>
 
         <motion.p
