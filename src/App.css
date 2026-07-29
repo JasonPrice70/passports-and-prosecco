@@ -38,9 +38,9 @@
 }
 .nav__links a {
   font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--dark-ink-muted); transition: color 0.2s;
+  text-transform: uppercase; color: var(--dark-ink); transition: color 0.2s;
 }
-.nav__links a:hover { color: var(--dark-ink); }
+.nav__links a:hover { color: var(--gold); }
 .nav__social { display: flex; align-items: center; gap: 0.75rem; }
 .nav__social a { color: var(--dark-ink-muted); transition: color 0.2s; }
 .nav__social a:hover { color: var(--pink); }
