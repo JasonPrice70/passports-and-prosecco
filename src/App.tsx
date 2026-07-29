@@ -118,16 +118,16 @@ function Nav() {
 
         <div className="nav__social">
           <a href="https://instagram.com/passportsandproseccolife" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-              <rect x="2" y="2" width="20" height="20" rx="5"/>
-              <circle cx="12" cy="12" r="5"/>
-              <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
           </a>
-          <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-              <path d="M12 2C6.5 2 2 6.5 2 12c0 4.2 2.6 7.8 6.3 9.3-.1-.8-.2-2.1 0-3l1.4-5.8s-.4-.7-.4-1.7c0-1.6.9-2.8 2.3-2.8 1.1 0 1.6.8 1.6 1.8 0 1.1-.7 2.7-1 4.1-.3 1.2.6 2.1 1.7 2.1 2 0 3.4-2.1 3.4-5.1 0-2.7-1.9-4.6-4.6-4.6-3.1 0-4.9 2.3-4.9 4.7 0 .9.4 1.9.8 2.4.1.1.1.3.1.4l-.3 1.2c-.1.4-.3.5-.7.3-1.6-.7-2.5-3-2.5-4.8 0-3.9 2.8-7.4 8.1-7.4 4.3 0 7.6 3 7.6 7 0 4.2-2.6 7.5-6.3 7.5-1.2 0-2.4-.6-2.8-1.4l-.7 2.8c-.3 1-.9 2.1-1.4 2.9.9.3 1.9.5 2.9.5 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
-            </svg>
+          <a href="https://www.youtube.com/@PassportsandProseccoLife" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.97A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61592306325332" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@passportsandproseccolife" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>
           </a>
         </div>
 
@@ -520,8 +520,14 @@ function Footer() {
             <a href="https://instagram.com/passportsandproseccolife" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
             </a>
-            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
-              <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.2 2.6 7.8 6.3 9.3 0-.8-.2-2.1 0-3l1.4-5.8s-.4-.7-.4-1.7c0-1.6.9-2.8 2.3-2.8 1.1 0 1.6.8 1.6 1.8 0 1.1-.7 2.7-1 4.1-.3 1.2.6 2.1 1.7 2.1 2 0 3.4-2.1 3.4-5.1 0-2.7-1.9-4.6-4.6-4.6-3.1 0-4.9 2.3-4.9 4.7 0 .9.4 1.9.8 2.4.1.1.1.3.1.4l-.3 1.2c-.1.4-.3.5-.7.3-1.6-.7-2.5-3-2.5-4.8 0-3.9 2.8-7.4 8.1-7.4 4.3 0 7.6 3 7.6 7 0 4.2-2.6 7.5-6.3 7.5-1.2 0-2.4-.6-2.8-1.4l-.7 2.8c-.3 1-.9 2.1-1.4 2.9.9.3 1.9.5 2.9.5 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+            <a href="https://www.youtube.com/@PassportsandProseccoLife" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.97A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61592306325332" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@passportsandproseccolife" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+              <svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>
             </a>
             <a href="mailto:hello@passportsandprosecco.com" aria-label="Email">
               <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
