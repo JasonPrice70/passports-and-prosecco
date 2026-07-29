@@ -5,28 +5,37 @@ import {
 } from 'framer-motion'
 import './App.css'
 
-// ─── Images (all verified) ──────────────────────────────────────────────────
+// ─── Images ──────────────────────────────────────────────────────────────────
+// Real travel photos (local)
+const P = {
+  northern_lights:  '/iceland-northern-lights.jpeg',
+  paris_group:      '/paris-group.jpeg',
+  paris_eiffel:     '/paris-eiffel-night.jpeg',
+  paris_louvre:     '/paris-louvre.jpeg',
+  rome_moonrise:    '/rome-moonrise.jpeg',
+  rome_balcony:     '/rome-cavalieri-balcony.jpeg',
+  santorini_arch:   '/santorini-blue-domes.jpeg',
+  santorini_family: '/santorini-family.jpeg',
+  athens:           '/athens-acropolis.jpeg',
+  munich:           '/munich-hofbrauhaus.jpeg',
+  munich_beer:      '/munich-beer-hall.jpeg',
+  elegant_dining:   '/elegant-dining.jpeg',
+  cruise:           '/cruise-formal.jpeg',
+} as const
+
+// Unsplash fallbacks for destinations without local photos yet
 const B = 'https://images.unsplash.com/photo-'
 const IMG = {
-  hero:     `${B}1609971757431-439cf7b4141b`,  // Eiffel Tower at golden hour (used in photo strip)
-  paris:    `${B}1499856871958-5b9627545d1a`,  // Paris bridge at dusk
-  bungalow: `${B}1544550581-5f7ceaf7f992`,     // Maldives overwater bungalows
-  dock:     `${B}1476514525535-07fb3b4ae5f1`,  // Wooden dock, lake, mountains
-  venice:   `${B}1523906834658-6e24ef2386f9`,  // Venice canal
-  amalfi:   `${B}1516483638261-f4dbaf036963`,  // Amalfi coast village
-  food:     `${B}1414235077428-338989a2e8c0`,  // Fine dining
-  salmon:   `${B}1567620905732-2d1ec7ab7445`,  // Plated dish
-  spread:   `${B}1504674900247-0877df9cc836`,  // Food spread
-  cocktail: `${B}1551024709-8f23befc6f87`,     // Cocktail
-  travel:   `${B}1539635278303-d4002c07eae3`,  // Luggage on cobblestones
-  rome:     `${B}1552832230-c0197dd311b5`,     // Colosseum, Rome
-  kyoto:    `${B}1528360983277-13d401cdc186`,  // Japan alleyway
-  santorini:`${B}1507525428034-b723cf961d3e`,  // Santorini beach
+  amalfi:   `${B}1516483638261-f4dbaf036963`,  // Amalfi coast (no local photo yet)
+  travel:   `${B}1539635278303-d4002c07eae3`,  // Newsletter photo
 } as const
 
 function src(id: string, w = 1200, q = 82) {
   return `${id}?auto=format&fit=crop&w=${w}&q=${q}`
 }
+
+// local photos don't need query params
+function lsrc(path: string) { return path }
 
 // ─── Framer Motion helpers ──────────────────────────────────────────────────
 const fadeUp = {
@@ -249,12 +258,12 @@ function Hero() {
 
 // ─── Photo Strip ─────────────────────────────────────────────────────────────
 const STRIP = [
-  { id: IMG.kyoto,    alt: 'Japanese temple with red lanterns at dusk' },
-  { id: IMG.bungalow, alt: 'Maldives overwater bungalows on turquoise water' },
-  { id: IMG.hero,     alt: 'Eiffel Tower at golden hour between Haussmann buildings' },
-  { id: IMG.salmon,   alt: 'Artfully plated course at a fine restaurant' },
-  { id: IMG.venice,   alt: 'Venice canal at golden hour' },
-  { id: IMG.food,     alt: 'Fine dining table with candlelight' },
+  { id: P.northern_lights,  alt: 'Jason and Debbi under the Northern Lights in Reykjavik, Iceland' },
+  { id: P.santorini_arch,   alt: 'Blue domes and white buildings of Oia, Santorini' },
+  { id: P.paris_eiffel,     alt: 'Jason and Debbi at the Eiffel Tower at night' },
+  { id: P.rome_moonrise,    alt: 'Full moon rising over Rome at night' },
+  { id: P.athens,           alt: 'The Acropolis of Athens glowing at night' },
+  { id: P.munich,           alt: 'The family raising beer steins at the Hofbräuhaus Munich' },
 ] as const
 
 function PhotoStrip() {
@@ -263,10 +272,7 @@ function PhotoStrip() {
       <div className="photo-strip__photos">
         {STRIP.map(({ id, alt }) => (
           <div key={id} className="photo-strip__item">
-            <img
-              src={`${id}?auto=format&fit=crop&w=400&h=240&q=80`}
-              alt={alt} loading="lazy" width={400} height={240}
-            />
+            <img src={lsrc(id)} alt={alt} loading="lazy" />
           </div>
         ))}
       </div>
@@ -303,16 +309,16 @@ function About() {
             aria-hidden="true"
           >
             <figure className="polaroid polaroid--1">
-              <img src={src(IMG.dock, 400, 80)} alt="" loading="lazy" />
+              <img src={lsrc(P.paris_eiffel)} alt="Jason and Debbi at the Eiffel Tower at night in Paris" loading="lazy" />
             </figure>
             <figure className="polaroid polaroid--2">
-              <img src={src(IMG.food, 400, 80)} alt="" loading="lazy" />
+              <img src={lsrc(P.northern_lights)} alt="Jason and Debbi under the Northern Lights in Iceland" loading="lazy" />
             </figure>
             <figure className="polaroid polaroid--3">
-              <img src={src(IMG.venice, 400, 80)} alt="" loading="lazy" />
+              <img src={lsrc(P.santorini_family)} alt="Family in front of the blue domes of Santorini" loading="lazy" />
             </figure>
             <figure className="polaroid polaroid--4">
-              <img src={src(IMG.amalfi, 350, 75)} alt="" loading="lazy" />
+              <img src={lsrc(P.munich)} alt="Family raising beer steins at Hofbräuhaus in Munich" loading="lazy" />
             </figure>
             <div className="collage__heart" aria-hidden="true">♥</div>
           </motion.div>
@@ -347,11 +353,11 @@ function About() {
 
 // ─── Destinations ────────────────────────────────────────────────────────────
 const DESTINATIONS = [
-  { img: IMG.amalfi,    name: 'Amalfi Coast',  country: 'Italy',   sub: 'Where every hairpin turn reveals something more beautiful' },
-  { img: IMG.rome,      name: 'Rome',          country: 'Italy',   sub: 'Sunsets from the Cavalieri, prosecco in robes' },
-  { img: IMG.venice,    name: 'Venice',        country: 'Italy',   sub: 'Where getting lost is the whole point' },
-  { img: IMG.santorini, name: 'Switzerland',   country: 'Europe',  sub: 'Mountains, precision, and the finest Fondue' },
-  { img: IMG.paris,     name: 'Paris',         country: 'France',  sub: 'Romance isn\'t a cliché when you\'re actually there' },
+  { img: P.paris_louvre,    name: 'Paris',        country: 'France',  sub: 'Three trips and we still can\'t get enough' },
+  { img: P.rome_moonrise,   name: 'Rome',         country: 'Italy',   sub: 'Sunsets from the Cavalieri, prosecco in robes' },
+  { img: P.santorini_arch,  name: 'Santorini',    country: 'Greece',  sub: 'White walls, blue domes, and too much wine' },
+  { img: P.athens,          name: 'Athens',       country: 'Greece',  sub: 'The Acropolis at night took our breath away' },
+  { img: P.munich,          name: 'Munich',       country: 'Germany', sub: 'Yes, we ordered four steins. Worth it.' },
 ] as const
 
 function Destinations() {
@@ -385,9 +391,9 @@ function Destinations() {
           <motion.a key={dest.name} href="#" className="dest-card" variants={fadeUp}>
             <img
               className="dest-card__img"
-              src={src(dest.img, 600, 80)}
+              src={lsrc(dest.img)}
               alt={`${dest.name}, ${dest.country}`}
-              loading="lazy" width={600} height={800}
+              loading="lazy"
             />
             <div className="dest-card__overlay" aria-hidden="true" />
             <div className="dest-card__info">
@@ -416,7 +422,7 @@ function Newsletter() {
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <img src={src(IMG.travel, 800, 82)} alt="Luxury monogrammed luggage on sunlit cobblestone in a European city" loading="lazy" width={800} height={1000} />
+          <img src={src(IMG.travel, 800, 82)} alt="Luggage ready for the next adventure" loading="lazy" width={800} height={1000} />
           <div className="newsletter__photo-overlay" aria-hidden="true" />
         </motion.div>
 
@@ -464,12 +470,12 @@ function Newsletter() {
 
 // ─── Instagram ────────────────────────────────────────────────────────────────
 const IG = [
-  { img: IMG.hero,     alt: 'Paris bridge glowing at dusk' },
-  { img: IMG.amalfi,   alt: 'Amalfi coast village at midday' },
-  { img: IMG.food,     alt: 'Fine dining plate under candlelight' },
-  { img: IMG.salmon,   alt: 'Michelin-starred plated course' },
-  { img: IMG.venice,   alt: 'Venice canal at golden hour' },
-  { img: IMG.cocktail, alt: 'Elegant garnished cocktail' },
+  { img: P.northern_lights,  alt: 'Jason and Debbi under the Northern Lights in Iceland' },
+  { img: P.paris_group,      alt: 'Family in front of the Eiffel Tower, Paris' },
+  { img: P.santorini_arch,   alt: 'Blue domed churches of Oia, Santorini' },
+  { img: P.rome_balcony,     alt: 'Prosecco on the balcony overlooking Rome at night' },
+  { img: P.athens,           alt: 'The Acropolis of Athens lit up at night' },
+  { img: P.munich,           alt: 'Raising steins at the Hofbräuhaus in Munich' },
 ] as const
 
 function Instagram() {
@@ -496,7 +502,7 @@ function Instagram() {
             key={img} href="https://instagram.com/passportsandproseccolife" target="_blank" rel="noopener noreferrer"
             className="instagram__item" variants={fadeUp}
           >
-            <img src={src(img, 500, 75)} alt={alt} loading="lazy" width={500} height={500} />
+            <img src={lsrc(img)} alt={alt} loading="lazy" />
             <div className="instagram__hover" aria-hidden="true">
               <span>♥ Follow</span>
             </div>
@@ -510,8 +516,8 @@ function Instagram() {
 // ─── Blog ────────────────────────────────────────────────────────────────────
 const POSTS = [
   {
-    img: IMG.rome,
-    alt: 'The lights of Rome glowing across the ancient skyline at dusk',
+    img: P.rome_balcony,
+    alt: 'Prosecco on the balcony of the Cavalieri overlooking Rome at night',
     date: 'June 2025',
     category: 'Italy',
     title: 'The Cavalieri at Sunset: The Night Rome Made Us Speechless',
@@ -519,8 +525,8 @@ const POSTS = [
       'We were sitting on the balcony of the Cavalieri in our robes, watching the sun drop behind the old city, when Debbi turned to me and said — "This is it. This is the life." A glass of prosecco. The whole of Rome laid out below us. Some moments you don\'t photograph. You just live inside them.',
   },
   {
-    img: IMG.food,
-    alt: 'Candlelit table with handmade pasta and Chianti at a Roman trattoria',
+    img: P.elegant_dining,
+    alt: 'Raising glasses of white wine at an elegant hotel restaurant',
     date: 'May 2025',
     category: 'Food & Wine',
     title: 'Bene Knew Exactly What We Wanted Before We Did',
@@ -528,13 +534,13 @@ const POSTS = [
       'At Il Bersagliere in Rome\'s Prati District, our waiter Bene told us simply: "I know what you\'ll love." Then he proceeded to prove it — dish after extraordinary dish, each one better than the last, all of it washed down with a very generous amount of Chianti. The best meals aren\'t always planned.',
   },
   {
-    img: IMG.kyoto,
-    alt: 'The Northern Lights dancing across a dark Finnish sky in shades of green and violet',
-    date: 'February 2025',
-    category: 'Finland',
+    img: P.northern_lights,
+    alt: 'Jason and Debbi together under the Northern Lights in Reykjavik, Iceland',
+    date: 'December 2025',
+    category: 'Iceland',
     title: 'Standing Under the Northern Lights: Nothing Can Prepare You',
     excerpt:
-      'We\'d seen photos. We thought we knew what to expect. We did not. Standing in the Finnish wilderness watching the sky fill with ribbons of green and violet light, we were completely, utterly silent. Then Debbi whispered — "We need to come back." We\'re already planning it.',
+      'We\'d seen photos. We thought we knew what to expect. We did not. Standing outside Harpa Concert Hall in Reykjavik watching the sky fill with ribbons of green light, we were completely, utterly silent. Then Debbi whispered — "We need to come back." We\'re already planning it.',
   },
 ] as const
 
@@ -562,7 +568,7 @@ function Blog() {
           {POSTS.map(post => (
             <motion.article key={post.title} className="blog-card" variants={fadeUp}>
               <a href="#" className="blog-card__img-wrap">
-                <img src={src(post.img, 700, 75)} alt={post.alt} loading="lazy" width={700} height={467} />
+                <img src={lsrc(post.img)} alt={post.alt} loading="lazy" />
               </a>
               <div className="blog-card__body">
                 <div className="blog-card__meta">
