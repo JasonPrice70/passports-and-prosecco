@@ -327,10 +327,13 @@ function About() {
               <span className="script-inline">we're making memories ♥</span>
             </motion.h2>
             <motion.p className="about__body" variants={fadeUp}>
-              After decades of hard work and big dreams, we made the ultimate decision — to leave it all behind. From Palm Beach to hidden gems, from Michelin stars to little cafes, we're here to inspire you to chase your dreams and savor every moment.
+              We're Jason &amp; Debbi — a couple from Palm Beach County with a simple philosophy: life is too short for ordinary travel and mediocre wine. We still have careers. But every spare moment, every vacation day, every long weekend belongs to the road.
             </motion.p>
             <motion.p className="about__body" variants={fadeUp}>
-              This is our story. Told one passport stamp, one raised glass, one unforgettable meal at a time.
+              Italy stole our hearts. Switzerland took our breath away. Standing under the Northern Lights in Finland reminded us why we started this in the first place. And our ritual is non-negotiable — wherever we land, we find the balcony, order the prosecco, and watch the world go quiet.
+            </motion.p>
+            <motion.p className="about__body" variants={fadeUp}>
+              This is us building toward the life we want — one passport stamp, one beautifully set table, one unforgettable view at a time.
             </motion.p>
             <motion.div variants={fadeUp}>
               <a href="#destinations" className="btn btn--pink about__cta">Read Our Story →</a>
@@ -344,11 +347,11 @@ function About() {
 
 // ─── Destinations ────────────────────────────────────────────────────────────
 const DESTINATIONS = [
-  { img: IMG.amalfi,    name: 'Amalfi Coast', country: 'Italy',  sub: 'Cliffs, limoncello & la dolce vita' },
-  { img: IMG.kyoto,     name: 'Kyoto',        country: 'Japan',  sub: 'Temples, cherry blossoms & stillness' },
-  { img: IMG.rome,      name: 'Roma Roma',    country: 'Italy',  sub: 'Ancient streets & trattoria dinners' },
-  { img: IMG.santorini, name: 'Santorini',    country: 'Greece', sub: 'Blue domes, wine & sunset views' },
-  { img: IMG.paris,     name: 'Paris',        country: 'France', sub: 'Romance is always on the menu' },
+  { img: IMG.amalfi,    name: 'Amalfi Coast',  country: 'Italy',   sub: 'Where every hairpin turn reveals something more beautiful' },
+  { img: IMG.rome,      name: 'Rome',          country: 'Italy',   sub: 'Sunsets from the Cavalieri, prosecco in robes' },
+  { img: IMG.venice,    name: 'Venice',        country: 'Italy',   sub: 'Where getting lost is the whole point' },
+  { img: IMG.santorini, name: 'Switzerland',   country: 'Europe',  sub: 'Mountains, precision, and the finest Fondue' },
+  { img: IMG.paris,     name: 'Paris',         country: 'France',  sub: 'Romance isn\'t a cliché when you\'re actually there' },
 ] as const
 
 function Destinations() {
@@ -425,10 +428,10 @@ function Newsletter() {
             Join Our Travel List
           </motion.span>
           <motion.h2 className="newsletter__heading" variants={fadeUp}>
-            Get our favorite finds, travel tips &amp; behind-the-scenes moments straight to your inbox.
+            The hotels worth every euro. The restaurants your guidebook missed. The moments that remind you life is too short to wait.
           </motion.h2>
           <motion.p className="newsletter__sub" variants={fadeUp}>
-            Destination guides, hidden restaurants, packing secrets, and dispatches from wherever our pinky is raised this week.
+            Join our list for real destination guides, honest hotel reviews, table-by-table food finds, and dispatches from wherever our pinky is raised this week.
           </motion.p>
 
           {submitted ? (
@@ -504,6 +507,80 @@ function Instagram() {
   )
 }
 
+// ─── Blog ────────────────────────────────────────────────────────────────────
+const POSTS = [
+  {
+    img: IMG.rome,
+    alt: 'The lights of Rome glowing across the ancient skyline at dusk',
+    date: 'June 2025',
+    category: 'Italy',
+    title: 'The Cavalieri at Sunset: The Night Rome Made Us Speechless',
+    excerpt:
+      'We were sitting on the balcony of the Cavalieri in our robes, watching the sun drop behind the old city, when Debbi turned to me and said — "This is it. This is the life." A glass of prosecco. The whole of Rome laid out below us. Some moments you don\'t photograph. You just live inside them.',
+  },
+  {
+    img: IMG.food,
+    alt: 'Candlelit table with handmade pasta and Chianti at a Roman trattoria',
+    date: 'May 2025',
+    category: 'Food & Wine',
+    title: 'Bene Knew Exactly What We Wanted Before We Did',
+    excerpt:
+      'At Il Bersagliere in Rome\'s Prati District, our waiter Bene told us simply: "I know what you\'ll love." Then he proceeded to prove it — dish after extraordinary dish, each one better than the last, all of it washed down with a very generous amount of Chianti. The best meals aren\'t always planned.',
+  },
+  {
+    img: IMG.kyoto,
+    alt: 'The Northern Lights dancing across a dark Finnish sky in shades of green and violet',
+    date: 'February 2025',
+    category: 'Finland',
+    title: 'Standing Under the Northern Lights: Nothing Can Prepare You',
+    excerpt:
+      'We\'d seen photos. We thought we knew what to expect. We did not. Standing in the Finnish wilderness watching the sky fill with ribbons of green and violet light, we were completely, utterly silent. Then Debbi whispered — "We need to come back." We\'re already planning it.',
+  },
+] as const
+
+function Blog() {
+  const { ref, inView } = useReveal()
+  return (
+    <section id="stories" className="blog section-light" style={{ padding: 'var(--section-py) 0' }}>
+      <div className="container" ref={ref}>
+        <motion.div
+          className="section-header"
+          style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)', textAlign: 'center' }}
+          initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={stagger}
+        >
+          <motion.span className="section-kicker" variants={fadeUp}>From the Journal</motion.span>
+          <motion.h2 className="section-title-light" variants={fadeUp}>Stories Worth Telling</motion.h2>
+          <motion.p style={{ fontSize: '1rem', color: 'var(--light-ink-muted)', marginTop: '0.75rem', maxWidth: '44ch', marginInline: 'auto' }} variants={fadeUp}>
+            The moments behind the passport stamps.
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          className="blog__grid"
+          initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={stagger}
+        >
+          {POSTS.map(post => (
+            <motion.article key={post.title} className="blog-card" variants={fadeUp}>
+              <a href="#" className="blog-card__img-wrap">
+                <img src={src(post.img, 700, 75)} alt={post.alt} loading="lazy" width={700} height={467} />
+              </a>
+              <div className="blog-card__body">
+                <div className="blog-card__meta">
+                  <span className="blog-card__category">{post.category}</span>
+                  <span className="blog-card__date">{post.date}</span>
+                </div>
+                <h3 className="blog-card__title"><a href="#">{post.title}</a></h3>
+                <p className="blog-card__excerpt">{post.excerpt}</p>
+                <a href="#" className="blog-card__read-more">Read the Full Story →</a>
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
 // ─── Footer ───────────────────────────────────────────────────────────────────
 function Footer() {
   return (
@@ -573,6 +650,7 @@ export default function App() {
         <TaglineBar />
         <About />
         <Destinations />
+        <Blog />
         <Newsletter />
         <Instagram />
       </main>
