@@ -117,7 +117,7 @@ function Nav() {
         </nav>
 
         <div className="nav__social">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <a href="https://instagram.com/passportsandproseccolife" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               <rect x="2" y="2" width="20" height="20" rx="5"/>
               <circle cx="12" cy="12" r="5"/>
@@ -479,7 +479,7 @@ function Instagram() {
         initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={stagger}
       >
         <motion.div className="instagram__handle" variants={fadeUp}>
-          @passportsandprosecco <span>♥</span>
+          @passportsandproseccolife <span>♥</span>
         </motion.div>
         <motion.p className="instagram__sub" variants={fadeUp}>Follow along on Instagram</motion.p>
       </motion.div>
@@ -490,7 +490,7 @@ function Instagram() {
       >
         {IG.map(({ img, alt }) => (
           <motion.a
-            key={img} href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+            key={img} href="https://instagram.com/passportsandproseccolife" target="_blank" rel="noopener noreferrer"
             className="instagram__item" variants={fadeUp}
           >
             <img src={src(img, 500, 75)} alt={alt} loading="lazy" width={500} height={500} />
@@ -517,7 +517,7 @@ function Footer() {
           </div>
           <p className="footer__tagline">Keep your pinky up, darling. ♥</p>
           <div className="footer__social">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <a href="https://instagram.com/passportsandproseccolife" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
             </a>
             <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
